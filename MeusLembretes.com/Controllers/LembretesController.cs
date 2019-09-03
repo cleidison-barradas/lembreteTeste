@@ -17,8 +17,8 @@ namespace MeusLembretes.com.Controllers
         // GET: Lembretes
         public ActionResult Index()
         {
-            var lembretes = db.Lembretes.Include(l => l.Usuarioy);
-            return View(lembretes.ToList());
+            var lembretes = db.Lembretes.Include(l => l.Usuario);
+            return View(lembretes.OrderBy(l => l.RealizacaoData));
         }
 
         // GET: Lembretes/Details/5
@@ -52,6 +52,8 @@ namespace MeusLembretes.com.Controllers
         {
             if (ModelState.IsValid)
             {
+                lembrete.DataCadastro = DateTime.Now;
+                lembrete.Modificacao = DateTime.Now;
                 db.Lembretes.Add(lembrete);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +88,7 @@ namespace MeusLembretes.com.Controllers
         {
             if (ModelState.IsValid)
             {
+                lembrete.Modificacao = DateTime.Now;
                 db.Entry(lembrete).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

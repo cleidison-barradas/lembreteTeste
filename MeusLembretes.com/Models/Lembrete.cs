@@ -25,11 +25,16 @@ namespace MeusLembretes.com.Models
         public string Mensagem  { get; set; }
 
         [Required(ErrorMessage = "Uma Data E Requerida")]
+        [DataType(DataType.Date,ErrorMessage ="Formato Invalido")]
         public DateTime RealizacaoData { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Formato Invalido")]
         public DateTime DataCadastro { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Formato Invalido")]
         public DateTime Modificacao { get; set; }
 
-        public Usuario Usuarioy { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
     }
 }

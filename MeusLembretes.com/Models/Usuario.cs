@@ -24,11 +24,11 @@ namespace MeusLembretes.com.Models
 
         public DateTime DataCadastro { get; set; }
 
-        [Required(ErrorMessage ="Senha Obrigatorio")]
+        [Required(ErrorMessage ="Senha Obrigatorio")]  
         public string Senha { get; set; }
 
         public bool Ativo { get; set; }
 
-        public ICollection<Usuario> Usuarios{ get; set; }
+        public virtual ICollection<Usuario> Usuarios{ get; set; }
     }
 }

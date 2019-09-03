@@ -2,62 +2,38 @@
 
 @{
     ViewBag.Title = "Index";
+    { Layout = null; }
 }
 
-<h2>Index</h2>
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css">*@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<h2 class="text-center">Listagem Lembretes</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h5 class="card-header">@Html.DisplayFor(mo =>item.Titulo)</h5>
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayFor(mo => item.Mensagem)</p>
+                        <a href="#" class="btn btn-primary btn-xs">Editar</a>
+                        <a href="#" class="btn btn-warning">Copiar</a>
+                    </div>
+                    <div class="card-footer">
+                        <p>P/dia @Html.DisplayFor(mo => item.RealizacaoData)</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+    <br />
+    <div>
+        @Html.ActionLink("Voltar", "Index","Home",new { }, new { @class="btn btn-info"})
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuarioy.UsuarioNome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mensagem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RealizacaoData)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Modificacao)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuarioy.UsuarioNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mensagem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RealizacaoData)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCadastro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modificacao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LembreteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LembreteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LembreteId })
-        </td>
-    </tr>
-}
 
-</table>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
