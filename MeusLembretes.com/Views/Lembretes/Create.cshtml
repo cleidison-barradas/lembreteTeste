@@ -1,0 +1,58 @@
+﻿@model MeusLembretes.com.Models.Lembrete
+
+@{
+    ViewBag.Title = "Create";
+    { Layout = null; }
+}
+@*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/formulario.css">
+
+<body id="centralcontent">
+    <div class="form-container">
+        @using (Html.BeginForm("Create", "Lembretes"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="page-header">
+                <h1>Novo Lembrete</h1>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4>Dados do Lembrete</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            @Html.Label("Titulo do Lembrete", htmlAttributes: new { @class = "label-control" })
+                            @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", placeholder = "Escreva aqui o Titulo" } })
+                            @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            @Html.Label("Mensagem", htmlAttributes: new { @class = "label-control" })
+                            @Html.TextAreaFor(model => model.Mensagem, htmlAttributes: new { @class = "form-control", style = "height:250px", placeholder = "Escreva aqui sua Mensagem" })
+                            @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group col-md-2">
+                            @Html.Label("Lembrar dia", htmlAttributes: new { @class = "label-control" })
+                            <input type="date" />
+                            @Html.ValidationMessageFor(model => model.RealizacaoData, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" value="Criar" class="btn btn-success">
+                    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+    </div>
+</body>
+@*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+}

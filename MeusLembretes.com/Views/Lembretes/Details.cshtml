@@ -1,0 +1,66 @@
+﻿@model MeusLembretes.com.Models.Lembrete
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lembrete</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuarioy.UsuarioNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuarioy.UsuarioNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mensagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mensagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RealizacaoData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RealizacaoData)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modificacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modificacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LembreteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
